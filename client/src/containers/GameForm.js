@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
+import { connect } from 'react-redux'
+import { saveGame } from '../actions/actions'
 
 class GameForm extends Component {
   state = {
     title: '',
     cover: '',
-    errors: {}
+    errors: {},
+    loading: false
   }
 
   handleChange = (event) => {
@@ -20,6 +23,7 @@ class GameForm extends Component {
       this.setState({ [event.target.name]: event.target.value })
     }
   }
+
   handleSubmit = (event) => {
     event.preventDefault()
     const { title, cover } = this.state
@@ -31,15 +35,34 @@ class GameForm extends Component {
       errors.cover = "Cover can't be empty."
     }
     this.setState({ errors })
+    const isValid = Object.keys(errors).length === 0
+
+    if (isValid) {
+      this.setState({ loading: true })
+      this.props.saveGame({ title, cover }).then(
+        () => { },
+        (err) => err.response.json().then(({ errors }) => {
+          this.setState({
+            errors,
+            loading: false
+          })
+        })
+      )
+    }
   }
 
   render() {
-    const { title, cover, errors } = this.state
+    const { title, cover, errors, loading } = this.state
     return (
-      <form className="ui form" onSubmit={this.handleSubmit}>
+      <form className={classnames('ui', 'form', { loading: loading })}
+        onSubmit={this.handleSubmit}>
         <h2>Add New Game</h2>
-
-        <div className={classNames('field', { error: !!errors.title })}>
+        {!!errors.global &&
+          <div className="ui negative message">
+            <p>{errors.global}</p>
+          </div>
+        }
+        <div className={classnames('field', { error: !!errors.title })}>
           <label htmlFor="title">Title</label>
           <input type="text"
             id="title"
@@ -48,7 +71,7 @@ class GameForm extends Component {
             onChange={this.handleChange} />
           <span>{errors.title}</span>
         </div>
-        <div className={classNames('field', { error: !!errors.cover })}>
+        <div className={classnames('field', { error: !!errors.cover })}>
           <label htmlFor="cover">Cover URL</label>
           <input type="text"
             id="cover"
@@ -68,4 +91,4 @@ class GameForm extends Component {
   }
 }
 
-export default GameForm
+export default connect(null, { saveGame })(GameForm)
