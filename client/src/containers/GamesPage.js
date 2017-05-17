@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import GamesList from './components/GamesList'
-import { fetchGames } from './actions/actions'
+import GamesList from '../components/GamesList'
+import { fetchGames } from '../actions/actions'
 
 class GamesPage extends Component {
   componentDidMount() {
@@ -29,12 +29,5 @@ const mapStateToProps = (state) => {
     games: state.games
   }
 }
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchGames: () => {
-//       dispatch('F')
-//     }
-//   }
-// }
 
 export default  connect(mapStateToProps, { fetchGames })(GamesPage)

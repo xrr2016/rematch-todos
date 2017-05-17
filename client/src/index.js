@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux'
 import {  BrowserRouter as Router } from 'react-router-dom'
-import rootReducer from './rootReducer'
+import rootReducer from './reducers/rootReducer'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
-import App from './App';
-import './index.css';
+import App from './components/App';
+import './styles/index.css';
 
 const store = createStore(
   rootReducer,
