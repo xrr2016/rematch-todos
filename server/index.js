@@ -21,13 +21,19 @@ app.use(bodyParser.json())
 const db = 'mongodb://localhost/curd-with-redux'
 
 mongodb.MongoClient.connect(db, (err, db) => {
-
+  // 获取全部game
   app.get('/api/games', (req, res) => {
     db.collection('games').find({}).toArray((err, games) => {
       res.json({ games })
     })
   })
-
+  // 获取单个game
+  app.use('/api/game/:_id', (req, res) => {
+    db.collection('games').findOne({ _id: new mongodb.ObjectID(req.params._id) }, (err, game) => {
+      res.json(game)
+    })
+  })
+  // 新增一个game
   app.post('/api/games', (req, res) => {
     const { errors, isValid } = validate(req.body)
     if (isValid) {

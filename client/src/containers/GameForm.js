@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { saveGame } from '../actions/actions'
+import { saveGame, fetchGame } from '../actions/actions'
 
 class GameForm extends Component {
   state = {
-    title: '',
-    cover: '',
+    title: this.props.game ? this.props.game.title : '',
+    cover: this.props.game ? this.props.game.cover : '',
+    _id: this.props.game ? this.props.game._id : null,
     errors: {},
     done: false,
     loading: false
@@ -52,6 +53,20 @@ class GameForm extends Component {
           })
         })
       )
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      title: nextProps.game.title,
+      cover: nextProps.game.cover,
+      _id: nextProps.game._id,
+    })
+  }
+
+  componentDidMount = () => {
+    if (this.props.match.params._id) {
+      this.props.fetchGame(this.props.match.params._id)
     }
   }
 
@@ -100,4 +115,14 @@ class GameForm extends Component {
   }
 }
 
-export default connect(null, { saveGame })(GameForm)
+const mapStateToProps = (state, props) => {
+  const { _id } = props.match.params
+  if (_id) {
+    return {
+      game: state.games.find(game => game._id === _id)
+    }
+  }
+  return { game: null }
+}
+
+export default connect(mapStateToProps, { saveGame, fetchGame })(GameForm)
