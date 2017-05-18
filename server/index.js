@@ -28,7 +28,7 @@ mongodb.MongoClient.connect(db, (err, db) => {
     })
   })
   // 获取单个game
-  app.get('/api/games/:_id', (req, res) => {
+  app.get('/api/game/:_id', (req, res) => {
     db.collection('games').findOne({ _id: new mongodb.ObjectID(req.params._id) }, (err, game) => {
       res.json(game)
     })

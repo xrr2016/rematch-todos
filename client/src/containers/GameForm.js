@@ -63,7 +63,7 @@ class GameForm extends Component {
   }
 
   render() {
-    const { title, cover, errors, loading, done } = this.state
+    const { title, cover, errors, loading } = this.state
     const form = (
       <form className={classnames('ui', 'form', { loading: loading })}
         onSubmit={this.handleSubmit}>
