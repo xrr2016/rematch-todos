@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
-import { saveGame, fetchGame } from '../actions/actions'
+
 
 class GameForm extends Component {
   state = {
@@ -10,7 +8,6 @@ class GameForm extends Component {
     cover: this.props.game ? this.props.game.cover : '',
     _id: this.props.game ? this.props.game._id : null,
     errors: {},
-    done: false,
     loading: false
   }
 
@@ -29,11 +26,12 @@ class GameForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { title, cover } = this.state
+    const { _id, title, cover } = this.state
     let errors = {}
     if (title === '') {
       errors.title = "Title can't be empty."
     }
+    
     if (cover === '') {
       errors.cover = "Cover can't be empty."
     }
@@ -42,7 +40,7 @@ class GameForm extends Component {
 
     if (isValid) {
       this.setState({ loading: true })
-      this.props.saveGame({ title, cover }).then(
+      this.props.saveGame({ _id, title, cover }).then(
         () => {
           this.setState({ done: true })
         },
@@ -62,12 +60,6 @@ class GameForm extends Component {
       cover: nextProps.game.cover,
       _id: nextProps.game._id,
     })
-  }
-
-  componentDidMount = () => {
-    if (this.props.match.params._id) {
-      this.props.fetchGame(this.props.match.params._id)
-    }
   }
 
   render() {
@@ -109,20 +101,11 @@ class GameForm extends Component {
     )
     return (
       <div>
-        {done ? <Redirect to="/games" /> : form}
+        { form }
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const { _id } = props.match.params
-  if (_id) {
-    return {
-      game: state.games.find(game => game._id === _id)
-    }
-  }
-  return { game: null }
-}
 
-export default connect(mapStateToProps, { saveGame, fetchGame })(GameForm)
+export default GameForm

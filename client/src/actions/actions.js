@@ -2,6 +2,7 @@ export const SET_GAMES = 'SET_GAMES'
 export const SAVE_GAME = 'SAVE_GAME'
 export const ADD_GAME = 'ADD_GAME'
 export const GAME_FETCHED = 'GAME_FETCHED'
+export const GAME_UPDATED = 'GAME_UPDATED'
 
 const handleResponse = (res) => {
   if (res.ok) {
@@ -61,5 +62,25 @@ export function saveGame(game) {
       }
     }).then(handleResponse)
       .then(data => dispatch(addGame(data.games)))
+  }
+}
+
+export function gameUpdated(game) {
+  return {
+    type: GAME_UPDATED,
+    game
+  }
+}
+
+export function updateGame(game) {
+  return dispatch => {
+    return fetch(`/api/games/${game._id}`, {
+      method: 'put',
+      body: JSON.stringify(game),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(handleResponse)
+      .then(data => dispatch(gameUpdated(data.game)))
   }
 }

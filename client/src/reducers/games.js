@@ -1,4 +1,4 @@
-import { SET_GAMES, ADD_GAME, GAME_FETCHED } from '../actions/actions'
+import { SET_GAMES, ADD_GAME, GAME_FETCHED, GAME_UPDATED } from '../actions/actions'
 
 export default (state = [], action = {}) => {
   switch (action.type) {
@@ -24,6 +24,13 @@ export default (state = [], action = {}) => {
           action.game
         ]
       }
+      case GAME_UPDATED: 
+        return state.map(item => {
+          if (item._id === action.game._id) {
+            return action.item
+          }
+          return item
+        })
     // return state.find(game => game._id === action.game._id)
     default:
       return state

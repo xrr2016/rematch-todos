@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom'
 import GamesPage from '../containers/GamesPage'
-import GameForm from '../containers/GameForm'
+import GameFormPage from '../containers/GameFormPage'
+
 
 class App extends Component {
   render() {
@@ -13,8 +14,8 @@ class App extends Component {
           <NavLink className="item" exact activeClassName="active" to='/games/new'>New Game</NavLink>
         </div>
         <Route exact path="/games" component={GamesPage} />
-        <Route exact path="/games/new" component={GameForm} />
-        <Route exact path="/game/:_id" component={GameForm} />
+        <Route exact path="/games/new" component={GameFormPage} />
+        <Route exact path="/game/:_id" component={GameFormPage} />
       </div>
     )
   }
