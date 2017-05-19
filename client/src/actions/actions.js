@@ -3,6 +3,7 @@ export const SAVE_GAME = 'SAVE_GAME'
 export const ADD_GAME = 'ADD_GAME'
 export const GAME_FETCHED = 'GAME_FETCHED'
 export const GAME_UPDATED = 'GAME_UPDATED'
+export const GAME_DETETE = 'GAME_DETETE'
 
 const handleResponse = (res) => {
   if (res.ok) {
@@ -82,5 +83,23 @@ export function updateGame(game) {
       }
     }).then(handleResponse)
       .then(data => dispatch(gameUpdated(data.game)))
+  }
+}
+
+
+export function deteleGame(game) {
+  return {
+    type: GAME_DETETE,
+    game
+  }
+}
+
+export function gameRemove(game) {
+  return dispatch => {
+    fetch(`/api/games/${game._id}`, {
+      method: 'detele'
+    }).then(res => {
+      handleResponse(res)
+    }).then(data => dispatch(deteleGame(data.game)))
   }
 }
