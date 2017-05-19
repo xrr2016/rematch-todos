@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom'
 import { saveGame, fetchGame, updateGame } from '../actions/actions'
 import GameForm from './GameForm'
 
@@ -11,8 +11,9 @@ class GameFormPage extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.match.params._id) {
-      this.props.fetchGame(this.props.match.params._id)
+    const { match } = this.props
+    if (match.params._id) {
+      this.props.fetchGame(match.params._id)
     }
   }
   saveGame = ({ _id, title, cover }) => {
@@ -45,10 +46,10 @@ class GameFormPage extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const { _id } = props.match.params
-  if (_id) {
+  const { match } = props 
+  if (match.params._id) {
     return {
-      game: state.games.find(game => game._id === _id)
+      game: state.games.find(game => game._id === match.params._id)
     }
   }
   return { game: null }

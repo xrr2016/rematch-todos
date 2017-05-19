@@ -17,7 +17,7 @@ const GameCard = ({ game, deleteGame }) => {
       <div className="extra content">
         <div className="ui two buttons">
           <Link to={`/game/${_id}`} className="ui basic button green">Edit</Link>
-          <button onClick={deleteGame} className="ui basic button red">Delete</button>
+          <button onClick={() => deleteGame(game._id)} className="ui basic button red">Delete</button>
         </div>
       </div>
     </div>

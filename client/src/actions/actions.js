@@ -87,19 +87,22 @@ export function updateGame(game) {
 }
 
 
-export function deteleGame(game) {
+export function deteleGame(id) {
   return {
     type: GAME_DETETE,
-    game
+    id
   }
 }
 
-export function gameRemove(game) {
+export function gameRemove(id) {
   return dispatch => {
-    fetch(`/api/games/${game._id}`, {
-      method: 'detele'
+    fetch(`/api/games/${id}`, {
+      method: 'detele',
+      headers: {
+        "Content-Type": "application/json"
+      }
     }).then(res => {
       handleResponse(res)
-    }).then(data => dispatch(deteleGame(data.game)))
+    }).then(data => dispatch(deteleGame(id)))
   }
 }

@@ -66,11 +66,13 @@ mongodb.MongoClient.connect(db, (err, db) => {
   })
   // 删除一个game
   app.delete('/api/games/:_id', (req, res) => {
-    db.collection('games').findOneAndDelete({ _id: new mongodb.ObjectID(req.params._id)}, (err, result) => {
+    db.collection('games').findOneAndDelete({ _id: new mongodb.ObjectID(req.params._id) }, (err, result) => {
       if (err) {
-        console.log(err)
+        res.status(500).json({
+          errors: { global: '服务端错误!' }
+        })
       }
-      res.json(result)
+      res.json({})
     })
   })
   app.use((req, res) => {

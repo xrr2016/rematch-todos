@@ -32,11 +32,12 @@ export default (state = [], action = {}) => {
         return item
       })
     case GAME_DETETE:
-      const idx = state.findIndex(item => item._id === action.game._id)
-      return [
-        ...state.slice(0, idx),
-        ...state.slice(idx + 1)
-      ]
+      // const idx = state.findIndex(item => item._id === action.id)
+      // return [
+      //   ...state.slice(0, idx),
+      //   ...state.slice(idx + 1)
+      // ]
+      return state.filter(item => item._id !== action.id)
     // return state.find(game => game._id === action.game._id)
     default:
       return state
