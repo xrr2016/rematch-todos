@@ -1,2 +1,1 @@
-# Curd-With-Redux
-
+# Easy Uploads
