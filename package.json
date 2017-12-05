@@ -1,7 +1,14 @@
 {
   "name": "easy-upload",
   "version": "0.0.1",
+  "scripts": {
+    "server": "nodemon ./server/index.js"
+  },
   "repository": "git@github.com:xrr2016/easy-upload.git",
   "author": "xrr2016 <xiaoranran1993@163.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "nodemon": "^1.12.4"
+  }
 }
