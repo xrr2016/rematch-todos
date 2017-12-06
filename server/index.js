@@ -6,6 +6,10 @@ app.get('/', (req, res) => {
   res.end('Hello world!')
 })
 
+app.post('/api/upload', (req, res) => {
+  
+})
+
 app.listen(port, () => {
   console.log(`App running on port ${port}`)
 })
