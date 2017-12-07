@@ -1,5 +1,8 @@
-html, body {
+:root {
   height: 100%;
-  margin: 0;
-  background: plum;
+  --primaryColor: #27296D;
+}
+
+body {
+  background: var(--primaryColor);
 }
