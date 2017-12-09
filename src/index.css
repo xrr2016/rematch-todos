@@ -1,8 +1,17 @@
 :root {
-  height: 100%;
-  --primaryColor: #27296D;
+  --primaryColor: #0080ff;
+  --secondaryColor: #03a6ff;
+  --thirdColor: #1ec0ff;
+  --bgColor: #a3daff;
+  box-sizing: border-box;
 }
 
 body {
+  margin: 0;
+  height: 100%;
   background: var(--primaryColor);
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
