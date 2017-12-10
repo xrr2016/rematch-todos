@@ -65,7 +65,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({5:[function(require,module,exports) {
+})({4:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89,7 +89,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 new _easyUpload2.default();
 console.log('hello world');
-},{"./easy-upload":5}],0:[function(require,module,exports) {
+},{"./easy-upload":4}],0:[function(require,module,exports) {
 var global = (1,eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -107,7 +107,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent) {
-  var ws = new WebSocket('ws://localhost:51701/');
+  var ws = new WebSocket('ws://localhost:56607/');
   ws.onmessage = (e) => {
     var data = JSON.parse(e.data);
 
