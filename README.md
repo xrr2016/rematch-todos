@@ -1,1 +1,1 @@
-# Easy Uploads
+# Easy Upload

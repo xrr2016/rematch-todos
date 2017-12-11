@@ -6,13 +6,13 @@
   box-sizing: border-box;
 }
 
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 body {
   color: #333333;
   margin: 0;
   height: 100%;
   background: var(--primaryColor);
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
 }

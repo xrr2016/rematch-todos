@@ -1,8 +1,0 @@
-:root {
-  height: 100%;
-  --primaryColor: #27296D;
-}
-
-body {
-  background: var(--primaryColor);
-}

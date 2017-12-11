@@ -2,15 +2,27 @@
   "name": "easy-upload",
   "version": "0.0.1",
   "scripts": {
-    "server": "nodemon ./server/index.js"
+    "server": "nodemon ./server/index.js",
+    "dev": "webpack-dev-server"
   },
   "repository": "git@github.com:xrr2016/easy-upload.git",
   "author": "xrr2016 <xiaoranran1993@163.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-polyfill": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.7",
+    "cssnano": "^3.10.0",
     "express": "^4.16.2",
+    "html-webpack-plugin": "^2.30.1",
     "nodemon": "^1.12.4",
+    "postcss": "^6.0.14",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-loader": "^2.0.9",
+    "precss": "^2.0.0",
+    "style-loader": "^0.19.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   }

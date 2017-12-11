@@ -1,1 +1,0 @@
-{"dependencies":[],"generated":{"js":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nclass EasyUpload {\n  constructor(selector) {\n    console.log('easy upload');\n  }\n}\n\nexports.default = EasyUpload;"},"hash":"9e635bf29525d324c930a1e9d8f50efd"}
