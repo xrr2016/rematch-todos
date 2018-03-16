@@ -20,10 +20,12 @@ export default class TodoItem extends Component {
   }
 
   handleClickDone = () => {
+    const { type } = this.props
+    const newType = type === COMPLETED ? ACTIVE : COMPLETED
     this.item.classList.toggle('completed')
     dispatch.todos.changeTodoType({
       id: this.props.id,
-      type: COMPLETED
+      type: newType
     })
   }
 

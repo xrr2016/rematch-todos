@@ -1,5 +1,5 @@
 import { ulid } from 'ulid'
-import localforage from 'localforage'
+import { todosStore } from '../storage'
 
 import { ACTIVE } from './type'
 
@@ -15,17 +15,17 @@ const todos = {
         startAt: Date.now(),
         type: ACTIVE
       }
-      localforage.setItem(todoId, newTodo)
+      todosStore.setItem(todoId, newTodo)
       return [newTodo, ...state]
     },
     pushTodo(state, todo) {
-      return [...state, todo]
+      return [todo, ...state]
     },
     editTodo(state, { id, newText }) {
       return state.map(todo => {
         if (todo.id === id) {
           const newTodo = { ...todo, text: newText }
-          localforage.setItem(id, newTodo)
+          todosStore.setItem(id, newTodo)
           return newTodo
         } else {
           return todo
@@ -35,7 +35,7 @@ const todos = {
     changeTodoType(state, { id, type }) {
       const index = state.findIndex(todo => todo.id === id)
       state[index].type = type
-      localforage.setItem(id, state[index])
+      todosStore.setItem(id, state[index])
       return [...state]
     },
     descendingOrder(state) {
@@ -59,7 +59,7 @@ const todos = {
       return [...state]
     },
     clearTodos(state) {
-      localforage.clear()
+      todosStore.clear()
       return []
     }
   }

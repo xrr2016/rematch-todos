@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@rematch/core": "^0.5.2",
-    "@rematch/persist": "^0.2.1",
     "custom-react-scripts": "^0.2.2",
     "localforage": "^1.6.0",
     "react": "^16.2.0",
@@ -16,7 +15,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server": "json-server -w -p 3001 db.json",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

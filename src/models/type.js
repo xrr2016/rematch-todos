@@ -6,7 +6,7 @@ export const DELETED = 'DELETED'
 export const currentType = {
   state: ALL,
   reducers: {
-    changeType(state, type) {
+    changeType(state, type = ACTIVE) {
       return type
     }
   }

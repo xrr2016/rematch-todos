@@ -4,7 +4,7 @@ import TodoList from '../container/TodoList'
 import TodoInput from '../container/TodoInput'
 
 const Main = () => (
-  <section className="main">
+  <section className="main-content">
     <TodoInput />
     <TodoList />
   </section>

@@ -18,12 +18,6 @@
   dependencies:
     redux "^3.7.2"
 
-"@rematch/persist@^0.2.1":
-  version "0.2.1"
-  resolved "http://registry.npm.taobao.org/@rematch/persist/download/@rematch/persist-0.2.1.tgz#2e072a1389ccab9f0ad80a85f174139db2a3dcfb"
-  dependencies:
-    redux-persist "^5.4.0"
-
 abab@^1.0.3:
   version "1.0.4"
   resolved "http://registry.npm.taobao.org/abab/download/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -6521,10 +6515,6 @@ reduce-function-call@^1.0.1:
   resolved "http://registry.npm.taobao.org/reduce-function-call/download/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
-
-redux-persist@^5.4.0:
-  version "5.9.1"
-  resolved "http://registry.npm.taobao.org/redux-persist/download/redux-persist-5.9.1.tgz#83bd4abd526ef768f63fceee338fa9d8ed6552d6"
 
 redux@^3.7.2:
   version "3.7.2"
