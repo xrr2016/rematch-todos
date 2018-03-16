@@ -59,6 +59,7 @@ body {
   position: fixed;
   height: 100vh;
   width: 20%;
+  min-width: 120px;
   left: 0;
   top: 0;
   display: flex;
@@ -171,7 +172,7 @@ body {
   position: absolute;
   top: 50%;
   left: 40%;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   text-align: center;
 }
 .todo-item {
@@ -253,7 +254,7 @@ body {
 }
 .todo-info {
   color: #ccc;
-  font-size: 0.7em;
+  font-size: 0.7rem;
 }
 .todo-item.completed .todo-text .todo-info {
   color: #fff;
@@ -304,7 +305,7 @@ body {
   border: none;
   height: 100%;
   outline: none;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   text-align: center;
 }
 .add-todo-button {
@@ -313,7 +314,7 @@ body {
   border: none;
   outline: none;
   color: #fff;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   font-weight: bold;
   cursor: pointer;
   background: #00b9f1;
@@ -322,4 +323,32 @@ body {
 }
 .add-todo-button:hover {
   box-shadow: -2px 4px 12px rgba(0, 0, 0, 0.22);
+}
+@media (max-width: 576px) {
+  html {
+    font-size: 10px;
+  }
+  .main-content {
+    margin-left: 36%;
+  }
+  .sidebar-title {
+    height: 50px;
+    line-height: 50px;
+  }
+  .add-todo-container {
+    height: 50px;
+  }
+  .config-menu .menu-item {
+    width: 130px;
+    padding: 10px 12px;
+  }
+  .todo-item .todo-action {
+    height: 50px;
+  }
+  .todo-item .todo-text::after {
+    height: 0;
+  }
+  .todo-item.selected .todo-action {
+    width: 60px;
+  }
 }
