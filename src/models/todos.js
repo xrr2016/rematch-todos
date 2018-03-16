@@ -1,23 +1,41 @@
 import { ulid } from 'ulid'
+import localforage from 'localforage'
+
+import { ACTIVE } from './type'
 
 const todos = {
   state: [],
   reducers: {
     addTodo(state, text) {
+      const todoId = ulid()
       const newTodo = {
-        id: ulid(),
+        id: todoId,
         text,
+        author: 'leo',
         startAt: Date.now(),
-        completed: false
+        type: ACTIVE
       }
+      localforage.setItem(todoId, newTodo)
       return [newTodo, ...state]
     },
-    removeTodo(state, id) {
-      return state.filter(todo => todo.id !== id)
+    pushTodo(state, todo) {
+      return [...state, todo]
     },
-    toggleTodo(state, id) {
+    editTodo(state, { id, newText }) {
+      return state.map(todo => {
+        if (todo.id === id) {
+          const newTodo = { ...todo, text: newText }
+          localforage.setItem(id, newTodo)
+          return newTodo
+        } else {
+          return todo
+        }
+      })
+    },
+    changeTodoType(state, { id, type }) {
       const index = state.findIndex(todo => todo.id === id)
-      state[index].completed = !state[index].completed
+      state[index].type = type
+      localforage.setItem(id, state[index])
       return [...state]
     },
     descendingOrder(state) {
@@ -39,13 +57,10 @@ const todos = {
         }
       }
       return [...state]
-    }
-  },
-  effects: {
-    // eslint-disable
-    async loadTodos(state) {
-      const datas = await fetch('/todos')
-      return state.concat(JSON.parse(datas))
+    },
+    clearTodos(state) {
+      localforage.clear()
+      return []
     }
   }
 }

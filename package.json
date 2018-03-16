@@ -6,6 +6,7 @@
     "@rematch/core": "^0.5.2",
     "@rematch/persist": "^0.2.1",
     "custom-react-scripts": "^0.2.2",
+    "localforage": "^1.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
@@ -21,8 +22,7 @@
   },
   "devDependencies": {
     "eslint": "^4.18.2",
-    "eslint-plugin-react": "^7.7.0",
-    "json-server": "^0.12.1"
+    "eslint-plugin-react": "^7.7.0"
   },
   "proxy": "http://localhost:3001"
 }
