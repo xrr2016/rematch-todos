@@ -1,5 +1,23 @@
-import './index.css'
-import EasyUpload from './easy-upload'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { init } from '@rematch/core'
 
-new EasyUpload()
-console.log('hello world')
+import './index.css'
+import todos from './models/toods'
+import App from './container/App'
+import registerServiceWorker from './registerServiceWorker'
+
+const store = init({
+  models: {
+    todos
+  }
+})
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+registerServiceWorker()

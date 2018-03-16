@@ -1,18 +1,205 @@
 :root {
-  --primaryColor: #0080ff;
-  --secondaryColor: #03a6ff;
-  --thirdColor: #1ec0ff;
-  --bgColor: #a3daff;
-  box-sizing: border-box;
+  --PrimryTextColor: #324b64;
 }
 
-*, *::before, *::after {
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+body {
+  color: var(--PrimryTextColor);
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Segoe UI, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+  overflow: hidden;
+  background: #f6f7fd;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
   box-sizing: inherit;
 }
 
-body {
-  color: #333333;
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 20%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #00b9f1;
+  border-right: 1px solid #eee;
+}
+.sidebar-title {
+  color: #fff;
+  padding-left: 20px;
+  height: 90px;
+  line-height: 90px;
+}
+.siderbar-list {
+  list-style: none;
   margin: 0;
+  padding: 0;
+}
+.sidebar-list-item {
+  width: 100%;
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 20px 0 20px 20px;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+.sidebar-list-item:hover {
+  color: var(--PrimryTextColor);
+  background-color: #fff;
+}
+.sidebar-list-item.active {
+  background-color: #fff;
+  color: var(--PrimryTextColor);
+}
+
+.search-bar {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background: #fff;
+  height: 60px;
+  /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); */
+}
+.search-bar-input {
+  flex: 1;
   height: 100%;
-  background: var(--primaryColor);
+  border: none;
+  outline: none;
+  padding-left: 12px;
+  margin: 0;
+  font-size: 1.2em;
+  transition: all ease-in 0.3s;
+}
+.search-bar-input:focus {
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main {
+  margin-left: 20%;
+  min-height: 100vh;
+}
+
+.todo-list {
+  list-style: none;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.todo-item {
+  position: relative;
+  background: #fff;
+  height: 90px;
+  border-radius: 0.25rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0, 32, 128, 0.1), 0 0 0 1px #f0f2f7;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.todo-item.completed {
+  color: #fff;
+  background-color: #2ec4b6;
+}
+.todo-item.completed .todo-text::after {
+  background-color: #fff;
+}
+.todo-item .todo-checkbox {
+  margin: 0 2%;
+  padding: 2px;
+  width: 24px;
+  height: 24px;
+  transform: translateY(2px);
+}
+
+.todo-item .todo-text {
+  position: relative;
+  flex: 1;
+}
+.todo-item .todo-text::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #324b64;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.todo-item .todo-text:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.todo-item .todo-action {
+  height: 100%;
+  width: 100px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all ease-out 0.3s;
+}
+.todo-item .todo-action:hover {
+  opacity: 0.9;
+}
+.todo-item .todo-done {
+  transform: translateX(200%);
+  background: linear-gradient(135deg, #7983ff, #5f9de9);
+}
+.todo-item .todo-delete {
+  transform: translateX(100%);
+  border-radius: 0 0.25rem 0.25rem 0;
+  background: linear-gradient(135deg, #ff4c9f, #ff7b74);
+}
+
+.add-todo-container {
+  margin-bottom: 24px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #fff;
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.22);
+}
+.add-todo-input {
+  flex: 1;
+  border: none;
+  height: 100%;
+  outline: none;
+  font-size: 1.5em;
+  text-align: center;
+}
+.add-todo-button {
+  width: 140px;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: bold;
+  cursor: pointer;
+  background: #00b9f1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+.add-todo-button:hover {
+  box-shadow: -2px 4px 12px rgba(0, 0, 0, 0.22);
 }

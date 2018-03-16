@@ -1,29 +1,28 @@
 {
-  "name": "easy-upload",
-  "version": "0.0.1",
-  "scripts": {
-    "server": "nodemon ./server/index.js",
-    "dev": "webpack-dev-server"
+  "name": "todos",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@rematch/core": "^0.5.2",
+    "@rematch/persist": "^0.2.1",
+    "custom-react-scripts": "^0.2.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "ulid": "^2.3.0"
   },
-  "repository": "git@github.com:xrr2016/easy-upload.git",
-  "author": "xrr2016 <xiaoranran1993@163.com>",
-  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "server": "json-server -w -p 3001 db.json",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "clean-webpack-plugin": "^0.1.17",
-    "css-loader": "^0.28.7",
-    "cssnano": "^3.10.0",
-    "express": "^4.16.2",
-    "html-webpack-plugin": "^2.30.1",
-    "nodemon": "^1.12.4",
-    "postcss": "^6.0.14",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-loader": "^2.0.9",
-    "precss": "^2.0.0",
-    "style-loader": "^0.19.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
-  }
+    "eslint": "^4.18.2",
+    "eslint-plugin-react": "^7.7.0",
+    "json-server": "^0.12.1"
+  },
+  "proxy": "http://localhost:3001"
 }
