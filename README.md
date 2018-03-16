@@ -1,6 +1,7 @@
 # 🔥 Rematch Todos Demo 🔥
 
 [![GitHub issues](https://img.shields.io/github/issues/xrr2016/rematch-todos.svg?style=flat-square)](https://github.com/xrr2016/rematch-todos/issues)
+[![Build](https://travis-ci.org/xrr2016/rematch-todos.svg?branch=master)]()
 
 ## Why
 
@@ -8,7 +9,7 @@
 
 ![demo](./rematch-todos.png)
 
-## [Live Demo]()
+## [Live Demo](https://xrr2016.github.io/rematch-todos)
 
 ## Usage
 
